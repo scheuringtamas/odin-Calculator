@@ -2,8 +2,8 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 
-const numberButtons = document.querySelectorAll(".number-buttons button");
-const operatorButtons = document.querySelectorAll(".operator-buttons button");
+const numberButtons = document.querySelectorAll(".calculator__key");
+const operatorButtons = document.querySelectorAll(".calculator__key_operator");
 const resultDiv = document.getElementById("result");
 
 numberButtons.forEach((button) => {
@@ -24,20 +24,18 @@ operatorButtons.forEach((button) => {
     if (value === "=") {
       if (firstNumber !== null && secondNumber !== null && operator !== null) {
         const result = operate(firstNumber, operator, secondNumber);
-        resultDiv.textContent = `Result: ${result}`;
-        // Reset for new calculation
+        resultDiv.textContent = result;
+
         firstNumber = result;
         secondNumber = null;
         operator = null;
       }
     } else if (value === "clear") {
-      // Clear all values
       firstNumber = null;
       secondNumber = null;
       operator = null;
-      resultDiv.textContent = "Result:";
+      resultDiv.textContent = "";
     } else {
-      // Set the operator
       operator = value;
     }
   });
@@ -56,7 +54,13 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  if (a === 0 || b === 0) {
+    alert(
+      "Error: Division by zero is undefine,. Please enter a valid divisor."
+    );
+  } else {
+    return a / b;
+  }
 }
 
 function operate(number1, operator, number2) {
@@ -76,8 +80,8 @@ function operate(number1, operator, number2) {
 
 function updateDisplay() {
   if (firstNumber !== null && operator !== null && secondNumber !== null) {
-    resultDiv.textContent = `Result: ${firstNumber} ${operator} ${secondNumber}`;
+    resultDiv.textContent = firstNumber + operator + secondNumber;
   } else if (firstNumber !== null) {
-    resultDiv.textContent = `Result: ${firstNumber}`;
+    resultDiv.textContent = firstNumber;
   }
 }
