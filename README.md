@@ -48,3 +48,7 @@ As usual with these things, there are elements of this project that are not goin
 - Make it look nice! This is a great project to practice your CSS skills. At least make the operations a different color from the keypad buttons.
 - Add a “backspace” button, so the user can undo if they click the wrong number.
 - Add keyboard support!
+
+## Screenshots
+
+<img src="/screenshots/calculator.png"/>
